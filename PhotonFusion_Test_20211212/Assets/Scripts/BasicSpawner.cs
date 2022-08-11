@@ -4,6 +4,7 @@ using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// 連線基底
@@ -45,6 +46,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (Input.GetKey(KeyCode.A)) data.direction += Vector3.left;
         if (Input.GetKey(KeyCode.D)) data.direction += Vector3.right;
         data.inputMouseLeft = Input.GetKey(KeyCode.Mouse0);
+        data.inputMouseRight = Input.GetKey(KeyCode.Mouse1);
 
         input.Set(data);
     }
@@ -106,6 +108,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     private Dictionary<PlayerRef, NetworkObject> players = new Dictionary<PlayerRef, NetworkObject>();
     private NetworkRunner runner;
+
+    public InputField inputFieldPlayerName;
 
     /// <summary>
     /// 開始房間並包含模式
